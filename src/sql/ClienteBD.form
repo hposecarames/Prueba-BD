@@ -70,7 +70,7 @@
                                   <Component id="jScrollPane1" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
-                                  <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                       <Group type="102" attributes="0">
                                           <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
@@ -78,14 +78,21 @@
                                           <Component id="txtNombre" min="-2" pref="150" max="-2" attributes="0"/>
                                       </Group>
                                       <Group type="102" alignment="0" attributes="0">
-                                          <Group type="103" groupAlignment="0" attributes="0">
-                                              <Component id="jLabel2" alignment="0" min="-2" max="-2" attributes="0"/>
-                                              <Component id="jLabel3" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="1" attributes="0">
+                                              <Group type="103" alignment="1" groupAlignment="0" attributes="0">
+                                                  <Component id="jLabel2" alignment="0" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="jLabel3" alignment="0" min="-2" max="-2" attributes="0"/>
+                                              </Group>
+                                              <Group type="102" alignment="1" attributes="0">
+                                                  <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
+                                                  <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
+                                              </Group>
                                           </Group>
                                           <EmptySpace type="separate" max="-2" attributes="0"/>
                                           <Group type="103" groupAlignment="0" attributes="0">
                                               <Component id="txtApellido" max="32767" attributes="0"/>
                                               <Component id="txtCiudad" max="32767" attributes="0"/>
+                                              <Component id="txtCif" alignment="0" max="32767" attributes="0"/>
                                           </Group>
                                       </Group>
                                   </Group>
@@ -94,6 +101,11 @@
                           <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                       </Group>
                   </Group>
+                  <EmptySpace max="32767" attributes="0"/>
+              </Group>
+              <Group type="102" alignment="0" attributes="0">
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="btnActualizar" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="32767" attributes="0"/>
               </Group>
           </Group>
@@ -116,7 +128,12 @@
                       <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="txtCiudad" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace min="-2" pref="53" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="txtCif" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLabel4" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jButton1" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="btnReset" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -124,7 +141,9 @@
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="jScrollPane1" min="-2" pref="226" max="-2" attributes="0"/>
-                  <EmptySpace pref="78" max="32767" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="btnActualizar" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace pref="40" max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="btnSalir" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="imprimir" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -159,7 +178,7 @@
         </Component>
         <Component class="javax.swing.JButton" name="btnReset">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Reset"/>
+            <Property name="text" type="java.lang.String" value="Borrar"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnResetActionPerformed"/>
@@ -188,11 +207,12 @@
             <Component class="javax.swing.JTable" name="taboa">
               <Properties>
                 <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                  <Table columnCount="4" rowCount="0">
+                  <Table columnCount="5" rowCount="0">
                     <Column editable="true" title="ID" type="java.lang.String"/>
                     <Column editable="true" title="Nombre" type="java.lang.String"/>
                     <Column editable="true" title="Apellido" type="java.lang.String"/>
                     <Column editable="true" title="Ciudad" type="java.lang.String"/>
+                    <Column editable="true" title="CIF" type="java.lang.String"/>
                   </Table>
                 </Property>
                 <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
@@ -232,6 +252,24 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Empresa"/>
           </Properties>
+        </Component>
+        <Component class="javax.swing.JButton" name="btnActualizar">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Actualizar"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnActualizarActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JLabel" name="jLabel4">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="CIF"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="txtCif">
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtCifActionPerformed"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>

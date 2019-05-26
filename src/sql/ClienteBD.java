@@ -8,6 +8,7 @@ package sql;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
 import static sql.BD.createNewTable;
 
@@ -45,6 +46,9 @@ public class ClienteBD extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         txtCiudad = new javax.swing.JTextField();
         btnEmpresa = new javax.swing.JButton();
+        btnActualizar = new javax.swing.JButton();
+        jLabel4 = new javax.swing.JLabel();
+        txtCif = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -59,7 +63,7 @@ public class ClienteBD extends javax.swing.JFrame {
             }
         });
 
-        btnReset.setText("Reset");
+        btnReset.setText("Borrar");
         btnReset.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnResetActionPerformed(evt);
@@ -80,11 +84,11 @@ public class ClienteBD extends javax.swing.JFrame {
 
             },
             new String [] {
-                "ID", "Nombre", "Apellido", "Ciudad"
+                "ID", "Nombre", "Apellido", "Ciudad", "CIF"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -96,6 +100,21 @@ public class ClienteBD extends javax.swing.JFrame {
         jLabel3.setText("Ciudad");
 
         btnEmpresa.setText("Empresa");
+
+        btnActualizar.setText("Actualizar");
+        btnActualizar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnActualizarActionPerformed(evt);
+            }
+        });
+
+        jLabel4.setText("CIF");
+
+        txtCif.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtCifActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -122,21 +141,30 @@ public class ClienteBD extends javax.swing.JFrame {
                                 .addContainerGap()
                                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(28, 28, 28)
+                                .addGap(26, 26, 26)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addComponent(jLabel1)
                                         .addGap(18, 18, 18)
                                         .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jLabel2)
-                                            .addComponent(jLabel3))
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addComponent(jLabel2)
+                                                .addComponent(jLabel3))
+                                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                                .addComponent(jLabel4)
+                                                .addGap(6, 6, 6)))
                                         .addGap(18, 18, 18)
                                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(txtApellido)
-                                            .addComponent(txtCiudad))))))
+                                            .addComponent(txtCiudad)
+                                            .addComponent(txtCif))))))
                         .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(btnActualizar)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -154,14 +182,20 @@ public class ClienteBD extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(txtCiudad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(53, 53, 53)
+                .addGap(17, 17, 17)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtCif, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel4))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
                     .addComponent(btnReset)
                     .addComponent(btnEmpresa))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 226, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 78, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnActualizar)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnSalir)
                     .addComponent(imprimir))
@@ -190,17 +224,19 @@ public class ClienteBD extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         createNewTable();    
-        bd.insert(txtNombre.getText(), txtApellido.getText(), txtCiudad.getText());        
+        bd.insert(txtNombre.getText(), txtApellido.getText(), txtCiudad.getText(), txtCif.getText());        
         
-        String [] tabla = new String[4];
+        String [] tabla = new String[5];
          
-        tabla [0] = bd.getId();
+        tabla [0] = Integer.toString(bd.getId());
         tabla [1] = txtNombre.getText();
         txtNombre.setText(null);
         tabla [2] = txtApellido.getText();
         txtApellido.setText(null);
         tabla [3] = txtCiudad.getText();
         txtCiudad.setText(null);
+        tabla [4] = txtCif.getText();
+        txtCif.setText(null);
         DefaultTableModel ta = (DefaultTableModel) taboa.getModel();
         ta.addRow(tabla);
         
@@ -209,11 +245,36 @@ public class ClienteBD extends javax.swing.JFrame {
     private void btnResetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnResetActionPerformed
         txtNombre.setText(null);
         txtApellido.setText(null);
+        txtCiudad.setText(null);
     }//GEN-LAST:event_btnResetActionPerformed
 
     private void imprimirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_imprimirActionPerformed
         bd.selectAll();
     }//GEN-LAST:event_imprimirActionPerformed
+
+    private void btnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarActionPerformed
+       
+       ArrayList<Object[]>tabs =new ArrayList<>();
+       DefaultTableModel ta = (DefaultTableModel) taboa.getModel();
+       tabs=bd.tablas();
+       ta.setRowCount(0);
+       for(Object[]datos:tabs){
+           ta.addRow(datos);
+           
+       }
+           
+       
+        
+        
+        
+          
+        
+        
+    }//GEN-LAST:event_btnActualizarActionPerformed
+
+    private void txtCifActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCifActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtCifActionPerformed
 
     /**
      * @param args the command line arguments
@@ -251,6 +312,7 @@ public class ClienteBD extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnActualizar;
     private javax.swing.JButton btnEmpresa;
     private javax.swing.JButton btnReset;
     private javax.swing.JButton btnSalir;
@@ -259,10 +321,12 @@ public class ClienteBD extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable taboa;
     private javax.swing.JTextField txtApellido;
+    private javax.swing.JTextField txtCif;
     private javax.swing.JTextField txtCiudad;
     private javax.swing.JTextField txtNombre;
     // End of variables declaration//GEN-END:variables
