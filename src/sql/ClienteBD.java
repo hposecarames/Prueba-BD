@@ -78,6 +78,11 @@ public class ClienteBD extends javax.swing.JFrame {
         });
 
         btnSalir.setText("Salir");
+        btnSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSalirActionPerformed(evt);
+            }
+        });
 
         taboa.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -100,6 +105,11 @@ public class ClienteBD extends javax.swing.JFrame {
         jLabel3.setText("Ciudad");
 
         btnEmpresa.setText("Empresa");
+        btnEmpresa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEmpresaActionPerformed(evt);
+            }
+        });
 
         btnActualizar.setText("Actualizar");
         btnActualizar.addActionListener(new java.awt.event.ActionListener() {
@@ -275,6 +285,15 @@ public class ClienteBD extends javax.swing.JFrame {
     private void txtCifActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCifActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtCifActionPerformed
+
+    private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
+        dispose();
+    }//GEN-LAST:event_btnSalirActionPerformed
+
+    private void btnEmpresaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEmpresaActionPerformed
+        Empresa nueva = new Empresa();
+        nueva.setVisible(true);
+    }//GEN-LAST:event_btnEmpresaActionPerformed
 
     /**
      * @param args the command line arguments
