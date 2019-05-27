@@ -18,12 +18,12 @@ public class Sql {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-
+        createNewDatabase("test.db");
         ClienteBD cliente = new ClienteBD();
         cliente.setVisible(true);
         
 
-//        createNewDatabase("test.db");
+        
 //        createNewTable();
 //        BD bd = new BD();
 //        bd.insert("Paquito", "El Chocolatero");

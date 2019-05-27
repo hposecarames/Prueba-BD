@@ -34,12 +34,13 @@ public class BD {
 
     public static void createNewTable() {
         // url = ruta de la base de datos
-        String url = "jdbc:sqlite:C:\\Users\\Kinkalla\\Documents\\sqlite\\tests.db";
+        String url = "jdbc:sqlite:/home/menuven/Documentos/sqlite/tests.db";
         
         // SQL statement for creating a new table
         String sql = "CREATE TABLE IF NOT EXISTS empresa (\n"
                 + "	cif PRIMARY KEY,\n"
-                + "	nome text \n"              
+                + "	nome text NOT NULL, \n"
+                + "     telefono text \n"              
                 + " );";
         
         
@@ -64,7 +65,7 @@ public class BD {
    
     Connection connect() {
         // url = ruta de nuestra base de datos
-        String url = "jdbc:sqlite:C:\\Users\\Kinkalla\\Documents\\sqlite\\tests.db";
+        String url = "jdbc:sqlite:/home/menuven/Documentos/sqlite/tests.db";
         Connection conn = null;
         try {
             conn = DriverManager.getConnection(url);
@@ -112,15 +113,32 @@ public class BD {
             
         } catch (SQLException e) {
             System.out.println(e.getMessage());
-        }
+        }       
         
         
     }
-    public void update(int id, String nome, String apellido, String ciudad, String cif) {
+    public void insert2(String cif, String nome, String telefono) {
+       
+        // insert para añadir clientes a nuestra base de datos
+        // el id se genera autómaticamente
+        String sql = "INSERT INTO empresa(cif,nome,telefono) VALUES(?,?,?)";
+ 
+        try (Connection conn = this.connect();
+                PreparedStatement pstmt = conn.prepareStatement(sql)){
+            pstmt.setString(1, cif);
+            pstmt.setString(2, nome);
+            pstmt.setString(3, telefono);
+            pstmt.executeUpdate();
+            
+            
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+    public void update(int id, String nome, String apellido, String ciudad) {
         String sql = "UPDATE cliente SET nome = ? , "
-                + "apellido = ? "
-                + "ciudad = ? "
-                + "cif = ? "
+                + "apellido = ? , "
+                + "ciudad = ? "                
                 + "WHERE id = ?";
  
         try (Connection conn = this.connect();
@@ -129,14 +147,78 @@ public class BD {
             // set the corresponding param
             pstmt.setString(1, nome);
             pstmt.setString(2, apellido);
-            pstmt.setString(3, ciudad);
-            pstmt.setString(4, cif);
-            pstmt.setInt(5, id);
+            pstmt.setString(3, ciudad);            
+            pstmt.setInt(4, id);
             // update 
             pstmt.executeUpdate();
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
+    }
+    
+    public void update2(String cif, String nome, String telefono) {
+        String sql = "UPDATE empresa SET nome = ? , "               
+                + "telefono = ? "                
+                + "WHERE cif = ?";
+ 
+        try (Connection conn = this.connect();
+                PreparedStatement pstmt = conn.prepareStatement(sql)) {
+ 
+            // set the corresponding param
+            pstmt.setString(1, nome);
+            pstmt.setString(2, telefono);
+            pstmt.setString(3, cif);
+            // update 
+            pstmt.executeUpdate();
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+    
+    public void delete(int id) {
+        String sql = "DELETE FROM cliente WHERE id = ?";
+ 
+        try (Connection conn = this.connect();
+                PreparedStatement pstmt = conn.prepareStatement(sql)) {
+ 
+            // set the corresponding param
+            pstmt.setInt(1, id);
+            // execute the delete statement
+            pstmt.executeUpdate();
+ 
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+    public void delete2(String cif) {
+        String sql = "DELETE FROM empresa WHERE cif = ?";
+ 
+        try (Connection conn = this.connect();
+                PreparedStatement pstmt = conn.prepareStatement(sql)) {
+ 
+            // set the corresponding param
+            pstmt.setString(1, cif);
+            // execute the delete statement
+            pstmt.executeUpdate();
+ 
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+    public String getCif(String id){
+        String sql = "SELECT cif FROM cliente where id ="+id;
+        String dato = "";
+        try (Connection conn = this.connect();
+             Statement stmt  = conn.createStatement();
+             ResultSet rs    = stmt.executeQuery(sql)){
+            
+            dato = rs.getString("cif");
+            
+        } catch (SQLException ex) {
+           Logger.getLogger(BD.class.getName()).log(Level.SEVERE, null, ex);
+       }
+     
+       return dato;
     }
     
     public int getId(){
@@ -146,9 +228,8 @@ public class BD {
         int rowID = 0;
         try (Connection conn = this.connect();
              Statement stmt  = conn.createStatement();
-             ResultSet rs    = stmt.executeQuery(sql)){
-            System.out.println(rs.getInt("max(id)"));
-            rowID = rs.getInt("max(id)");
+             ResultSet rs    = stmt.executeQuery(sql)){            
+             rowID = rs.getInt("max(id)");
             
         } catch (SQLException ex) {
            Logger.getLogger(BD.class.getName()).log(Level.SEVERE, null, ex);
@@ -171,6 +252,7 @@ public class BD {
                 datos[2] = rs.getString("apellido");
                 datos[3] = rs.getString("ciudad");
                 datos[4] = rs.getString("cif");
+                
                 tablas.add(datos);
         }        
    
@@ -180,7 +262,28 @@ public class BD {
      
         return tablas;
         }
-    
+    public ArrayList<Object[]> tablaE(){
+       ArrayList<Object[]> tablaE  = new ArrayList<>();
+       String sql = "SELECT cif, nome, telefono FROM empresa";
+        
+        try (Connection conn = this.connect();
+             Statement stmt  = conn.createStatement();
+             ResultSet rs    = stmt.executeQuery(sql)){
+        while (rs.next()) {
+                Object[] datos = new Object[3];               
+                datos[0] = rs.getString("cif");
+                datos[1] = rs.getString("nome");
+                datos[2] = rs.getString("telefono");
+                
+                tablaE.add(datos);
+        }        
+   
+    }  catch (SQLException ex) {
+           Logger.getLogger(BD.class.getName()).log(Level.SEVERE, null, ex);
+       }
+     
+        return tablaE;
+        }
     
     
 }
