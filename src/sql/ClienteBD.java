@@ -54,6 +54,7 @@ public class ClienteBD extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         txtTelefono = new javax.swing.JTextField();
         btnModificar = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -142,12 +143,21 @@ public class ClienteBD extends javax.swing.JFrame {
             }
         });
 
+        jButton2.setText("Borrar");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addComponent(btnModificar)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(imprimir)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -237,7 +247,8 @@ public class ClienteBD extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnSalir)
                     .addComponent(imprimir)
-                    .addComponent(btnModificar))
+                    .addComponent(btnModificar)
+                    .addComponent(jButton2))
                 .addContainerGap())
         );
 
@@ -300,11 +311,11 @@ public class ClienteBD extends javax.swing.JFrame {
 
     private void btnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarActionPerformed
        
-       ArrayList<Object[]>tabs =new ArrayList<>();
+       
        DefaultTableModel ta = (DefaultTableModel) taboa.getModel();
-       tabs=bd.tablas();
+       
        ta.setRowCount(0);
-       for(Object[]datos:tabs){
+       for(Object[]datos:bd.tablas()){
            ta.addRow(datos);
            
        }
@@ -323,6 +334,7 @@ public class ClienteBD extends javax.swing.JFrame {
     }//GEN-LAST:event_txtCifActionPerformed
 
     private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
+        
         dispose();
     }//GEN-LAST:event_btnSalirActionPerformed
 
@@ -335,6 +347,11 @@ public class ClienteBD extends javax.swing.JFrame {
         Modificar mod = new Modificar();
         mod.setVisible(true);
     }//GEN-LAST:event_btnModificarActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        Borrar borrar = new Borrar();
+        borrar.setVisible(true);
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -379,6 +396,7 @@ public class ClienteBD extends javax.swing.JFrame {
     private javax.swing.JButton btnSalir;
     private javax.swing.JButton imprimir;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

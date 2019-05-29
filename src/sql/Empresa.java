@@ -36,7 +36,7 @@ public class Empresa extends javax.swing.JFrame {
         btnSalir = new javax.swing.JButton();
         btnActualizar = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         tabla2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -111,11 +111,11 @@ public class Empresa extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSalirActionPerformed
 
     private void btnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarActionPerformed
-        ArrayList<Object[]>tabs =new ArrayList<>();
+       
        DefaultTableModel ta = (DefaultTableModel) tabla2.getModel();
-       tabs=bd.tablaE();
+       
        ta.setRowCount(0);
-       for(Object[]datos:tabs){
+       for(Object[]datos:bd.tablaE()){
            ta.addRow(datos);
     }//GEN-LAST:event_btnActualizarActionPerformed
     }

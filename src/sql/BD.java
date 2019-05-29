@@ -196,9 +196,9 @@ public class BD {
         try (Connection conn = this.connect();
                 PreparedStatement pstmt = conn.prepareStatement(sql)) {
  
-            // set the corresponding param
+            //recibe el parámetro (cif en nuestro caso que es el primary key)
             pstmt.setString(1, cif);
-            // execute the delete statement
+            // ejecutamos la sentencia sql
             pstmt.executeUpdate();
  
         } catch (SQLException e) {
