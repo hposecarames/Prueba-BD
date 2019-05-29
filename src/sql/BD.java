@@ -35,8 +35,7 @@ public class BD {
     public static void createNewTable() {
         // url = ruta de la base de datos
         String url = "jdbc:sqlite:/home/menuven/Documentos/sqlite/tests.db";
-        
-        // SQL statement for creating a new table
+        // Introducir la sentencia en la variable "sql".       
         String sql = "CREATE TABLE IF NOT EXISTS empresa (\n"
                 + "	cif PRIMARY KEY,\n"
                 + "	nome text NOT NULL, \n"
@@ -55,7 +54,7 @@ public class BD {
         
         try (Connection conn = DriverManager.getConnection(url);
                 Statement stmt = conn.createStatement()) {
-            // creamos la tabla cargando nuestra sentencia en la variable sql
+            // creamos la tabla cargando nuestra sentencia sql
             stmt.execute(sql);
             stmt.execute(sql2);
         } catch (SQLException e) {
@@ -144,12 +143,12 @@ public class BD {
         try (Connection conn = this.connect();
                 PreparedStatement pstmt = conn.prepareStatement(sql)) {
  
-            // set the corresponding param
+            
             pstmt.setString(1, nome);
             pstmt.setString(2, apellido);
             pstmt.setString(3, ciudad);            
             pstmt.setInt(4, id);
-            // update 
+             
             pstmt.executeUpdate();
         } catch (SQLException e) {
             System.out.println(e.getMessage());
@@ -181,9 +180,9 @@ public class BD {
         try (Connection conn = this.connect();
                 PreparedStatement pstmt = conn.prepareStatement(sql)) {
  
-            // set the corresponding param
+            //recibe el parámetro
             pstmt.setInt(1, id);
-            // execute the delete statement
+            //ejecuta la sentencia
             pstmt.executeUpdate();
  
         } catch (SQLException e) {
