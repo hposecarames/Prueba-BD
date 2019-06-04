@@ -13,7 +13,9 @@ import javax.swing.table.DefaultTableModel;
  * @author Kinkalla
  */
 public class Empresa extends javax.swing.JFrame {
+
     BD bd = new BD();
+
     /**
      * Creates new form Empresa
      */
@@ -111,14 +113,15 @@ public class Empresa extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSalirActionPerformed
 
     private void btnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarActionPerformed
-       
-       DefaultTableModel ta = (DefaultTableModel) tabla2.getModel();
-       
-       ta.setRowCount(0);
-       for(Object[]datos:bd.tablaE()){
-           ta.addRow(datos);
+
+        DefaultTableModel ta = (DefaultTableModel) tabla2.getModel();
+
+        ta.setRowCount(0);
+        for (Object[] datos : bd.tablaE()) {
+            ta.addRow(datos);
     }//GEN-LAST:event_btnActualizarActionPerformed
     }
+
     /**
      * @param args the command line arguments
      */

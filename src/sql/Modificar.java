@@ -10,7 +10,9 @@ package sql;
  * @author Hector Pose Carames
  */
 public class Modificar extends javax.swing.JFrame {
+
     BD bd = new BD();
+
     /**
      * Creates new form Modificar
      */
@@ -200,17 +202,16 @@ public class Modificar extends javax.swing.JFrame {
     private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
         int a = Integer.parseInt(txtId.getText());
         bd.update(Integer.parseInt(txtId.getText()), txtNombre.getText(), txtApellidos.getText(), txtCiudad.getText());
-        
-        
+
         bd.update2(bd.getCif(txtId.getText()), txtEmpresa.getText(), txtTelefono.getText());
         txtId.setText(null);
         txtNombre.setText(null);
-        txtApellidos.setText(null);       
+        txtApellidos.setText(null);
         txtCiudad.setText(null);
         txtCif.setText(null);
         txtEmpresa.setText(null);
         txtTelefono.setText(null);
-        
+
     }//GEN-LAST:event_btnModificarActionPerformed
 
     /**

@@ -17,8 +17,9 @@ import static sql.BD.createNewTable;
  * @author Hector Pose Carames
  */
 public class ClienteBD extends javax.swing.JFrame {
+
     BD bd = new BD();
-    
+
     public ClienteBD() {
         initComponents();
     }
@@ -280,27 +281,27 @@ public class ClienteBD extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        
-        createNewTable();    
+
+        createNewTable();
         bd.insert2(txtCif.getText(), txtEmpresa.getText(), txtTelefono.getText());
-        bd.insert(txtNombre.getText(), txtApellido.getText(), txtCiudad.getText(), txtCif.getText());        
-        
-        String [] tabla = new String[5];
-         
-        tabla [0] = Integer.toString(bd.getId());
-        tabla [1] = txtNombre.getText();
+        bd.insert(txtNombre.getText(), txtApellido.getText(), txtCiudad.getText(), txtCif.getText());
+
+        String[] tabla = new String[5];
+
+        tabla[0] = Integer.toString(bd.getId());
+        tabla[1] = txtNombre.getText();
         txtNombre.setText(null);
-        tabla [2] = txtApellido.getText();
+        tabla[2] = txtApellido.getText();
         txtApellido.setText(null);
-        tabla [3] = txtCiudad.getText();
+        tabla[3] = txtCiudad.getText();
         txtCiudad.setText(null);
-        tabla [4] = txtCif.getText();
+        tabla[4] = txtCif.getText();
         txtCif.setText(null);
         txtEmpresa.setText(null);
         txtTelefono.setText(null);
         DefaultTableModel ta = (DefaultTableModel) taboa.getModel();
         ta.addRow(tabla);
-        
+
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void btnResetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnResetActionPerformed
@@ -317,23 +318,16 @@ public class ClienteBD extends javax.swing.JFrame {
     }//GEN-LAST:event_imprimirActionPerformed
 
     private void btnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarActionPerformed
-       
-       
-       DefaultTableModel ta = (DefaultTableModel) taboa.getModel();
-       
-       ta.setRowCount(0);
-       for(Object[]datos:bd.tablas()){
-           ta.addRow(datos);
-           
-       }
-           
-       
-        
-        
-        
-          
-        
-        
+
+        DefaultTableModel ta = (DefaultTableModel) taboa.getModel();
+
+        ta.setRowCount(0);
+        for (Object[] datos : bd.tablas()) {
+            ta.addRow(datos);
+
+        }
+
+
     }//GEN-LAST:event_btnActualizarActionPerformed
 
     private void txtCifActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCifActionPerformed
@@ -341,7 +335,7 @@ public class ClienteBD extends javax.swing.JFrame {
     }//GEN-LAST:event_txtCifActionPerformed
 
     private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
-        
+
         dispose();
     }//GEN-LAST:event_btnSalirActionPerformed
 
@@ -358,13 +352,15 @@ public class ClienteBD extends javax.swing.JFrame {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         Borrar borrar = new Borrar();
         borrar.setVisible(true);
-        
+
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void txtTelefonoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTelefonoKeyTyped
         char c = evt.getKeyChar();
-        if(c<'0' || c>'9')evt.consume();
-         
+        if (c < '0' || c > '9') {
+            evt.consume();
+        }
+
     }//GEN-LAST:event_txtTelefonoKeyTyped
 
     /**

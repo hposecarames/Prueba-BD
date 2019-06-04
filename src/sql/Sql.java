@@ -6,7 +6,6 @@
 package sql;
 
 import static sql.BD.createNewDatabase;
-import static sql.BD.createNewTable;
 
 /**
  *
@@ -21,18 +20,13 @@ public class Sql {
         createNewDatabase("test.db");
         ClienteBD cliente = new ClienteBD();
         cliente.setVisible(true);
-        
 
-        
 //        createNewTable();
 //        BD bd = new BD();
 //        bd.insert("Paquito", "El Chocolatero");
 //        bd.insert("Pink", "Floyd");
 //        bd.selectAll();
 //        bd.getId();
-       
-        
-        
     }
-    
+
 }

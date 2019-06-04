@@ -10,7 +10,9 @@ package sql;
  * @author Hector Pose Carames
  */
 public class Borrar extends javax.swing.JFrame {
+
     BD bd = new BD();
+
     /**
      * Creates new form Borrar
      */
@@ -106,7 +108,9 @@ public class Borrar extends javax.swing.JFrame {
 
     private void txtIdKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtIdKeyTyped
         char c = evt.getKeyChar();
-        if(c<'0' || c>'9')evt.consume();
+        if (c < '0' || c > '9') {
+            evt.consume();
+        }
     }//GEN-LAST:event_txtIdKeyTyped
 
     /**
